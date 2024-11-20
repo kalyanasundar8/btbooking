@@ -1,6 +1,7 @@
 import express from "express";
 import colors from "colors";
-import dotenv from "dotenv";
+import parser from "cookie-parser";
+import dotenv, { parse } from "dotenv";
 dotenv.config();
 
 // Modules
@@ -19,6 +20,7 @@ const port = process.env.PORT;
 // Middlewares
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+server.use(parser());
 
 // Routes
 server.use("/api/user", userRoutes);
